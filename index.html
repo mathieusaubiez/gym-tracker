@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f5f2">
+  <title>Gym Tracker</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#18231e;background:#f4f5f2;font-synthesis:none;text-rendering:optimizeLegibility;--green:#176b4b;--line:#dce2dd;--muted:#65736b;--white:#fff;--soft:#e8f2ec}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;padding-bottom:calc(82px + env(safe-area-inset-bottom))}button,input,select{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:3;background:#f4f5f2eF;backdrop-filter:blur(12px);padding:14px 16px 10px;border-bottom:1px solid var(--line)}.head{max-width:650px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;font-size:20px;letter-spacing:-.5px}.brand span{color:var(--green)}.date-small{font-size:12px;color:var(--muted)}main{max-width:650px;margin:0 auto;padding:18px 14px}.tab{display:none}.tab.active{display:block}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700}.title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:5px 0 18px}h1{font-size:26px;line-height:1.15;letter-spacing:-.7px;margin:3px 0 0}h2{font-size:18px;margin:0 0 12px}.date-input{border:1px solid var(--line);border-radius:12px;padding:10px;background:white;color:#18231e;min-width:140px}.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 10px #17241c08}.card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.group{font-size:18px;font-weight:750}.score-pill{background:var(--soft);color:#145b40;padding:6px 10px;border-radius:99px;font-size:13px;font-weight:750;white-space:nowrap}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.metric{border:1px solid var(--line);border-radius:12px;overflow:hidden;text-align:center}.metric label{display:block;font-size:11px;color:var(--muted);padding:7px 0 0}.stepper{display:flex;align-items:center;justify-content:space-between;padding:4px 5px 7px}.stepper button{width:34px;height:34px;border:0;border-radius:10px;background:#f0f3f0;color:#24382d;font-size:22px;line-height:1}.stepper output{font-size:18px;font-weight:750;min-width:32px}.remove{border:0;background:transparent;color:#8d4b47;font-size:13px;padding:8px 2px;margin-top:5px}.select-wrap{display:grid;grid-template-columns:1fr auto;gap:8px}select{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:white;color:#18231e}.btn{border:0;border-radius:12px;min-height:48px;padding:0 18px;font-weight:750}.btn-primary{background:var(--green);color:white}.btn-secondary{background:#e8ece9;color:#22372b}.btn-danger{background:#f8e9e7;color:#86433e}.full{width:100%}.empty{text-align:center;padding:28px 12px;color:var(--muted);line-height:1.5}.summary{background:#173e30;color:white;border-radius:18px;padding:17px;margin:18px 0}.summary-top{display:flex;justify-content:space-between;align-items:center}.summary .eyebrow{color:#bfd7c9}.total{font-size:34px;font-weight:850;letter-spacing:-1px;margin-top:7px}.summary small{color:#d3e3da}.bottom-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}.nav-inner{max-width:650px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}.nav-btn{background:none;border:0;border-radius:12px;min-height:52px;color:#65736b;font-weight:700}.nav-btn.active{background:var(--soft);color:var(--green)}.nav-btn span{display:block;font-size:19px;line-height:1.1}.sticky-action{position:sticky;bottom:calc(72px + env(safe-area-inset-bottom));padding:12px 0;background:linear-gradient(transparent,#f4f5f2 25%)}.session-row{display:flex;justify-content:space-between;align-items:center;gap:10px}.session-date{font-weight:750}.session-meta{font-size:13px;color:var(--muted);margin-top:3px}.session-total{font-size:18px;font-weight:800;white-space:nowrap}.session-card{cursor:pointer}.session-card:active{transform:scale(.99)}.detail-header{display:flex;align-items:center;gap:10px;margin-bottom:15px}.back{border:0;border-radius:10px;background:#e8ece9;width:42px;height:42px;font-size:20px}.trend{display:flex;align-items:end;gap:7px;height:96px;margin-top:15px;padding:0 3px}.bar-col{flex:1;display:flex;height:100%;flex-direction:column;justify-content:end;align-items:center;gap:5px;min-width:0}.bar{width:min(28px,70%);background:#2d8a61;border-radius:7px 7px 3px 3px;min-height:3px}.bar-label{font-size:10px;color:var(--muted);white-space:nowrap}.trend-empty{font-size:14px;color:var(--muted)}.history-filters{display:flex;gap:8px;align-items:center;margin:14px 0}.history-filters select{min-height:42px;flex:1}.hint{font-size:13px;color:var(--muted);line-height:1.45}.detail-exercise{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #edf0ed}.detail-exercise:last-child{border:0}.detail-exercise small{display:block;color:var(--muted);margin-top:3px}.toast{position:fixed;z-index:9;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#18231e;color:#fff;padding:11px 16px;border-radius:12px;box-shadow:0 4px 18px #0003;display:none;white-space:nowrap}.toast.show{display:block}@media(min-width:600px){main{padding:24px 20px}.card{padding:18px}.title-row{align-items:center}}
+  </style>
+</head>
+<body>
+  <header><div class="head"><div class="brand">GYM<span>LOG</span></div><div class="date-small" id="todayLabel"></div></div></header>
+  <main>
+    <section class="tab active" id="workoutTab">
+      <div id="workoutView">
+        <div class="eyebrow">Current workout</div>
+        <div class="title-row"><h1>Track your session</h1><input class="date-input" type="date" id="sessionDate" aria-label="Session date"></div>
+        <div id="exerciseList"></div>
+        <div class="card" id="addCard"><h2>Add a muscle group</h2><div class="select-wrap"><select id="muscleSelect" aria-label="Choose a muscle group"></select><button class="btn btn-secondary" id="addExercise">Add</button></div><p class="hint">Add each muscle group once per session. Adjust sets, reps and weight with the large controls.</p></div>
+        <div class="summary"><div class="summary-top"><div class="eyebrow">Session score</div><div id="summaryCount">0 exercises</div></div><div class="total" id="liveTotal">0</div><small>Sum of Sets × Reps × Weight for every exercise</small></div>
+        <div class="sticky-action"><button class="btn btn-primary full" id="finishBtn">Save session</button></div>
+      </div>
+      <div id="savedView" hidden>
+        <div class="card" style="text-align:center;padding:27px 18px"><div style="font-size:34px">✓</div><h2 style="margin:9px 0 5px">Session saved</h2><p class="hint" id="savedMessage"></p><button class="btn btn-primary full" id="newSessionBtn">Start a new session</button></div>
+      </div>
+    </section>
+    <section class="tab" id="historyTab">
+      <div id="historyListView"><div class="eyebrow">Your training</div><div class="title-row"><h1>History & progress</h1><span class="score-pill" id="sessionCount">0 sessions</span></div>
+        <div class="card"><h2>Session score</h2><div class="trend" id="trendChart"></div><p class="hint" id="trendCaption" style="margin:12px 0 0"></p></div>
+        <div class="history-filters"><select id="muscleFilter" aria-label="Filter progress by muscle group"><option value="all">All muscle groups</option></select></div>
+        <div id="groupProgress"></div>
+        <h2 style="margin:22px 2px 10px">Past sessions</h2><div id="sessionsList"></div>
+      </div>
+      <div id="sessionDetailView" hidden></div>
+    </section>
+  </main>
+  <nav class="bottom-nav"><div class="nav-inner"><button class="nav-btn active" data-tab="workout"><span>＋</span>Workout</button><button class="nav-btn" data-tab="history"><span>◷</span>History</button></div></nav>
+  <div class="toast" id="toast"></div>
+<script>
+(()=>{
+  const GROUPS=['Bizeps','Trizeps','Sixpack','Delt','Chest','Lat','Calves','Quads','Hamstrings','Glutes'];
+  const DRAFT_KEY='gymlog-draft-v1', SESSIONS_KEY='gymlog-sessions-v1';
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+  const fmtDate=iso=>{if(!iso)return 'Unknown date';const [y,m,d]=iso.split('-').map(Number);return new Intl.DateTimeFormat(undefined,{day:'numeric',month:'short',year:'numeric'}).format(new Date(y,m-1,d))};
+  const read=(key,fallback)=>{try{const v=JSON.parse(localStorage.getItem(key));return v??fallback}catch{return fallback}};
+  let sessions=read(SESSIONS_KEY,[]).sort((a,b)=>b.date.localeCompare(a.date)||b.createdAt-a.createdAt);
+  let draft=read(DRAFT_KEY,{date:todayISO(),exercises:[]});
+  if(!draft||!Array.isArray(draft.exercises))draft={date:todayISO(),exercises:[]};
+  if(!draft.date)draft.date=todayISO();
+  const score=e=>e.sets*e.reps*e.weight;
+  const total=exercises=>exercises.reduce((sum,e)=>sum+score(e),0);
+  const persistDraft=()=>localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));
+  const toast=message=>{const t=$('#toast');t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),1800)};
+  $('#todayLabel').textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short'}).format(new Date());
+  $('#sessionDate').value=draft.date;
+  $('#muscleSelect').innerHTML=GROUPS.map(g=>`<option value="${g}">${g}</option>`).join('');
+  $('#muscleFilter').innerHTML='<option value="all">All muscle groups</option>'+GROUPS.map(g=>`<option value="${g}">${g}</option>`).join('');
+
+  function renderWorkout(){
+    $('#sessionDate').value=draft.date;
+    const list=$('#exerciseList');
+    if(!draft.exercises.length)list.innerHTML='<div class="card empty">No exercises yet.<br>Add a muscle group below to start logging your workout.</div>';
+    else list.innerHTML=draft.exercises.map((e,i)=>`<article class="card" data-index="${i}"><div class="card-head"><div class="group">${e.group}</div><div class="score-pill">Score ${score(e).toLocaleString()}</div></div><div class="metric-row">${[['sets',1,4,'Sets'],['reps',8,20,'Reps'],['weight',20,120,'Weight (kg)']].map(([key,min,max,label])=>`<div class="metric"><label>${label}</label><div class="stepper"><button data-action="dec" data-key="${key}" aria-label="Decrease ${label}">−</button><output>${e[key]}</output><button data-action="inc" data-key="${key}" aria-label="Increase ${label}">+</button></div></div>`).join('')}</div><button class="remove" data-action="remove">Remove</button></article>`).join('');
+    const available=GROUPS.filter(g=>!draft.exercises.some(e=>e.group===g));
+    $('#addCard').hidden=available.length===0;
+    $('#muscleSelect').innerHTML=available.map(g=>`<option value="${g}">${g}</option>`).join('');
+    $('#liveTotal').textContent=total(draft.exercises).toLocaleString();
+    $('#summaryCount').textContent=`${draft.exercises.length} ${draft.exercises.length===1?'exercise':'exercises'}`;
+    persistDraft();
+  }
+  $('#sessionDate').addEventListener('change',e=>{draft.date=e.target.value||todayISO();persistDraft()});
+  $('#addExercise').addEventListener('click',()=>{const group=$('#muscleSelect').value;if(!group)return;draft.exercises.push({group,sets:3,reps:10,weight:20});renderWorkout();toast(`${group} added`)});
+  $('#exerciseList').addEventListener('click',e=>{const btn=e.target.closest('button[data-action]');if(!btn)return;const card=btn.closest('[data-index]'),i=Number(card.dataset.index),item=draft.exercises[i];if(btn.dataset.action==='remove')draft.exercises.splice(i,1);else{const key=btn.dataset.key,limits={sets:[1,4],reps:[8,20],weight:[20,120]},[min,max]=limits[key];item[key]=Math.max(min,Math.min(max,item[key]+(btn.dataset.action==='inc'?1:-1)));}renderWorkout()});
+  $('#finishBtn').addEventListener('click',()=>{if(!draft.exercises.length){toast('Add at least one exercise first');return}const session={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),date:draft.date,createdAt:Date.now(),exercises:draft.exercises.map(e=>({...e})),total:total(draft.exercises)};sessions=[session,...sessions].sort((a,b)=>b.date.localeCompare(a.date)||b.createdAt-a.createdAt);localStorage.setItem(SESSIONS_KEY,JSON.stringify(sessions));localStorage.removeItem(DRAFT_KEY);$('#savedMessage').textContent=`${fmtDate(session.date)} · ${session.exercises.length} exercises · score ${session.total.toLocaleString()}`;$('#workoutView').hidden=true;$('#savedView').hidden=false;renderHistory()});
+  $('#newSessionBtn').addEventListener('click',()=>{draft={date:todayISO(),exercises:[]};$('#workoutView').hidden=false;$('#savedView').hidden=true;renderWorkout()});
+  $$('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>{const name=btn.dataset.tab;$$('.nav-btn').forEach(b=>b.classList.toggle('active',b===btn));$('#workoutTab').classList.toggle('active',name==='workout');$('#historyTab').classList.toggle('active',name==='history');if(name==='history'){showHistoryList();renderHistory()}}));
+  $('#muscleFilter').addEventListener('change',renderGroupProgress);
+  function renderHistory(){sessions.sort((a,b)=>b.date.localeCompare(a.date)||b.createdAt-a.createdAt);$('#sessionCount').textContent=`${sessions.length} ${sessions.length===1?'session':'sessions'}`;const chart=$('#trendChart');const recent=sessions.slice(0,8).reverse();if(!recent.length){chart.innerHTML='<span class="trend-empty">Save a workout to start seeing your progress.</span>';$('#trendCaption').textContent='Your recent session scores will appear here.'}else{const max=Math.max(...recent.map(s=>s.total),1);chart.innerHTML=recent.map(s=>`<div class="bar-col" title="${fmtDate(s.date)}: ${s.total.toLocaleString()}"><div class="bar" style="height:${Math.max(4,s.total/max*76)}px"></div><span class="bar-label">${new Date(...s.date.split('-').map((v,i)=>i===1?Number(v)-1:Number(v))).toLocaleDateString(undefined,{day:'numeric',month:'short'})}</span></div>`).join('');$('#trendCaption').textContent=`Showing ${recent.length} most recent ${recent.length===1?'session':'sessions'} · latest score ${recent[recent.length-1].total.toLocaleString()}.`}
+    renderGroupProgress();const box=$('#sessionsList');if(!sessions.length)box.innerHTML='<div class="card empty">No saved sessions yet. Your completed workouts will show up here.</div>';else box.innerHTML=sessions.map(s=>`<article class="card session-card" tabindex="0" role="button" data-session="${s.id}"><div class="session-row"><div><div class="session-date">${fmtDate(s.date)}</div><div class="session-meta">${s.exercises.length} ${s.exercises.length===1?'exercise':'exercises'}</div></div><div class="session-total">${s.total.toLocaleString()}</div></div></article>`).join('');
+  }
+  function renderGroupProgress(){const selected=$('#muscleFilter').value;const groups=selected==='all'?GROUPS:[selected];const host=$('#groupProgress');const populated=groups.map(group=>({group,items:sessions.map(s=>({session:s,exercise:s.exercises.find(e=>e.group===group)})).filter(x=>x.exercise)})).filter(x=>x.items.length);if(!populated.length){host.innerHTML=selected==='all'?'':'<div class="card empty">No entries for this muscle group yet.</div>';return}host.innerHTML=populated.map(({group,items})=>{const last=items[0].exercise,previous=items[1]?.exercise,delta=previous?score(last)-score(previous):null;return `<div class="card"><div class="card-head"><div class="group" style="font-size:16px">${group}</div><div class="score-pill">Latest ${score(last).toLocaleString()}</div></div><div class="session-meta">${items.length} ${items.length===1?'entry':'entries'}${delta===null?'':` · ${delta>=0?'+':''}${delta.toLocaleString()} vs previous`}</div></div>`}).join('')}
+  function showHistoryList(){$('#historyListView').hidden=false;$('#sessionDetailView').hidden=true}
+  function showSession(id){const s=sessions.find(x=>x.id===id);if(!s)return;const view=$('#sessionDetailView');$('#historyListView').hidden=true;view.hidden=false;view.innerHTML=`<div class="detail-header"><button class="back" aria-label="Back to history">‹</button><div><div class="eyebrow">Session details</div><strong>${fmtDate(s.date)}</strong></div></div><div class="summary"><div class="eyebrow">Session score</div><div class="total">${s.total.toLocaleString()}</div><small>${s.exercises.length} ${s.exercises.length===1?'exercise':'exercises'}</small></div><h2>Exercises</h2><div class="card">${s.exercises.map(e=>`<div class="detail-exercise"><div><strong>${e.group}</strong><small>${e.sets} sets × ${e.reps} reps × ${e.weight} kg</small></div><strong>${score(e).toLocaleString()}</strong></div>`).join('')}</div>`;view.querySelector('.back').addEventListener('click',showHistoryList)}
+  $('#sessionsList').addEventListener('click',e=>{const card=e.target.closest('[data-session]');if(card)showSession(card.dataset.session)});
+  $('#sessionsList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-session]')){e.preventDefault();showSession(e.target.dataset.session)}});
+  renderWorkout();renderHistory();
+})();
+</script>
+</body>
+</html>
